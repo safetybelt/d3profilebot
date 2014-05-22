@@ -199,7 +199,7 @@ def format_intro(hero_info):
     p_level = hero_info['paragon_level']
     hardcore = hero_info['hardcore']
     h_class = hero_info['class']
-    intro = u'# **Text Profile for {n}** - {l} (PL {pl}) {hc} {c}'.format(
+    intro = u'### **Text Profile for {n}** - {l} (PL {pl}) {hc} {c}'.format(
                         n=name, l=level, pl=p_level, hc=hardcore, c=h_class )
     return intro
 
