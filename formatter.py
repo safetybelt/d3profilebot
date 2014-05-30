@@ -132,6 +132,9 @@ def format_stats(stats, gear_stats=None):
                 row = db_cur.fetchone()
                 if row['display'] and row['disp_name']:
                     val = gear_stats[stat]
+                    # crit has a base of 5%; add it here
+                    if stat == 'Crit_Percent_Bonus_Capped':
+                        val += 5
                     # don't display stats at 0 or the low primary stats
                     if val == 0 or (row['primary_stat'] == 1 and val < 100):
                         continue
@@ -210,8 +213,8 @@ def format_outro():
     next_up = 'better stat layout; set bonuses'
     outro = ['\n\n#&nbsp;\n']
     outro.append(_super('bot is a work in progress | '))
-    outro.append(' {m} ^with ^suggestions ^| '.format(m=message_me))
-    outro.append(_super(' next todo: {n}'.format(n=next_up)))
+    outro.append(' {m} ^with ^suggestions '.format(m=message_me))
+    # outro.append(_super(' | next todo: {n}'.format(n=next_up)))
     outro.append('    \n')
     outro.append(_super('this post will remove itself at negative karma'))
 
